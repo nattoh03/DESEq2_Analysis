@@ -1,0 +1,72 @@
+
+############  while in the terminal, make a new directory for Differential analysis ##################
+mkdir /home/nattohz/Fun_RNASeq/DESEq2_Analysis
+cp /home/nattohz/Fun_RNASeq/Feature_Counts/*_Hisat_output_file.csv /home/nattohz/Fun_RNASeq/DESEq2_Analysis
+#
+######### Merge all Hisat output files #############
+cd /home/nattohz/Fun_RNASeq/DESEq2_Analysis
+cat *_Hisat_output_file.txt > All_Hisat_output_file.csv
+######## ensure the table describing experimental set up is also located in DESEq2_Analysis directory #############
+###this contains two columns i.e. sample names e.g. siaya_resistant and conditions/treatments e.g. 0.05% Deltamethrin_exposed ########### labelled as colData.txt
+######## now either shift to R studio or go directly into R on your terminal  by R ##########
+####  I prefer R studio #############
+#
+####load or install required libraries #######
+library()
+library()
+library()
+library()
+library()
+#
+###set the working directory ###########
+setwd("\user\nattohz\Fun_RNASeq\DESEq2_Analysis")
+#
+Sample_info <- read.table("colData.txt", header =T, sep = '\t')
+Sample_info 
+#
+##    Sample_Names              Treatments
+##  siaya_resistant        0.05%_Deltamethrin_exposed
+##  siaya_susceptible      0.05%_Deltamethrin_exposed
+##  siaya_unexposed        Acetone_control
+##
+#
+#
+###Load count matrix ##########
+Count_data <- read.csv("All_Hisat_output_file.csv", header = T, row.names = 1)
+Count_data 
+#
+#
+#
+####Combine your sample iformation and count matrix together #######
+combined_dd <- DeSeqDataSetFromMatrix(Count_data, Sample_info, ~Treatments)
+view(combined_dd)
+#
+#
+#
+#
+##### do some filtering by getting rid of lowly expressed genes ######
+keep <- rowSums(counts(combined_dd)) >=10
+dds <- dds[keep,]
+#
+#
+#### Main DeSeq read counts  ##############
+ddsDE <- DESeq (dds)
+#
+#
+#
+###### Export normalised reads counts based on sizes of library
+normCounts <- counts(ddsDE, normalized =T)
+view(normCounts)
+write.csv(normCounts, "normal.resistantassay.csv")
+#
+#
+#
+#####Deseq results and summary ###
+results(ddsDE, alpha = 0.05)
+res<- results(ddsDE, alpha = 0.05)
+summary(res)
+#
+#########order for easy look out ##############
+#
+resOrdered <- res[order(res$padj),]
+write.csv(resOrdered, "deseq_ordered.csv")
