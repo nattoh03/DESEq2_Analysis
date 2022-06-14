@@ -1,4 +1,4 @@
-
+#!/usr/bin/env bash
 ############  while in the terminal, make a new directory for Differential analysis ##################
 mkdir /home/nattohz/Fun_RNASeq/DESEq2_Analysis
 cp /home/nattohz/Fun_RNASeq/Feature_Counts/*_Hisat_output_file.csv /home/nattohz/Fun_RNASeq/DESEq2_Analysis
