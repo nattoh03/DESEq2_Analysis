@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 ############  while in the terminal, make a new directory for Differential analysis ##################
 mkdir /home/nattohz/Fun_RNASeq/DESEq2_Analysis
+## this makes a directory named DESEq2_Analysis
+## copy the csv file to the new folder
 cp /home/nattohz/Fun_RNASeq/Feature_Counts/*_Hisat_output_file.csv /home/nattohz/Fun_RNASeq/DESEq2_Analysis
 #
 ######### Merge all Hisat output files #############
+## get inside the new folder to begin working
 cd /home/nattohz/Fun_RNASeq/DESEq2_Analysis
 cat *_Hisat_output_file.txt > All_Hisat_output_file.csv
 ######## ensure the table describing experimental set up is also located in DESEq2_Analysis directory #############
