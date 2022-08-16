@@ -1,6 +1,7 @@
 # DESEq2_Analysis
 ####  Do different sample groups express genes differentially
-
+#### reference 1:
+#### https://github.com/nattoh03/RNASeq-Analysis-with-Hisat2/blob/main/pipeline_fastqc_alignHISAT2_bamsorted_output.txt
 
 
 Three questions to answer
@@ -8,6 +9,7 @@ Three questions to answer
 
 #### which genes do the reads (samples) belong to ?
     done in supercomputer, alignment of ref genome with Hisat2
+    reference 1 above
 
 #### How many reads align to a specifi gene?
    done in supercomputer,
@@ -15,6 +17,7 @@ Three questions to answer
    the gff file and 
    the sorted.bam file 
    to generate a txt/csv file for downstream analysis in R 
+   reference 1 above
    
 #### Do different samples express genes differentially?
     now this part is done in R
