@@ -19,6 +19,7 @@ library("tximport")
 library("readr")
 library("tximportData")
 library("DESeq2")
+library("tximeta")
 #
 ###set the working directory ###########
 setwd("\user\nattohz\Fun_RNASeq\DESEq2_Analysis")
