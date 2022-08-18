@@ -20,6 +20,10 @@ library()
 library()
 library()
 library()
+
+library("tximport")
+library("readr")
+library("tximportData")
 #
 ###set the working directory ###########
 setwd("\user\nattohz\Fun_RNASeq\DESEq2_Analysis")
