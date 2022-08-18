@@ -15,15 +15,10 @@ cat *_Hisat_output_file.txt > All_Hisat_output_file.csv
 ####  I prefer R studio #############
 #
 ####load or install required libraries #######
-library()
-library()
-library()
-library()
-library()
-
 library("tximport")
 library("readr")
 library("tximportData")
+library("DESeq2")
 #
 ###set the working directory ###########
 setwd("\user\nattohz\Fun_RNASeq\DESEq2_Analysis")
