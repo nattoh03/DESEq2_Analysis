@@ -1,3 +1,9 @@
+
+DESeq2 requires raw integer read counts for performing accurate DGE analysis. 
+The normalized read counts should not be used in DESeq2 analysis. 
+DESeq2 internally normalizes the count data correcting for differences in the library sizes as sequencing depth influence the read counts (sample-specific effect).
+DESeq2 does not consider gene length for normalization as gene length is constant for all samples 
+#### source: https://www.reneshbedre.com/blog/deseq2.html
 #!/usr/bin/env bash
 ############  while in the terminal, make a new directory for Differential analysis ##################
 mkdir /home/nattohz/Fun_RNASeq/DESEq2_Analysis
@@ -15,6 +21,11 @@ cat *_Hisat_output_file.txt > All_Hisat_output_file.csv
 ####  I prefer R studio #############
 #
 ####load or install required libraries #######
+#### installing DESeq2 for the first time
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("DESeq2")
+
 library("tximport")
 library("readr")
 library("tximportData")
