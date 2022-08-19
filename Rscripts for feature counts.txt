@@ -26,11 +26,18 @@ if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("DESeq2")
 
+#Load package-----
 library("tximport")
 library("readr")
 library("tximportData")
 library("DESeq2")
 library("tximeta")
+library(limma) # differential gene expression analysis
+library(edgeR) # differential gene expression analysis
+library(ggplot2) # for regular plotting
+library(ggpubr) #  to plot figures in one window
+library(data.table)
+
 #
 ###set the working directory ###########
 setwd("\user\nattohz\Fun_RNASeq\DESEq2_Analysis")
