@@ -72,3 +72,69 @@ library(DESeq2 )
 library(ggplot2)
 
     
+############## ALL RES   VS   ALL SUSCE 
+allres_vs_susce1 <- alldata[, c(1, 3, 4, 5, 12, 13, 6, 7, 9, 11, 14)]
+
+names(allres_vs_susce1)
+
+write.csv(allres_vs_susce1, "allres_vs_susce.csv")
+
+allres_vs_susce <- as.matrix(read.csv("allres_vs_susce.csv", header = T, row.names = "gene_id"))
+allres_vs_susce <- allres_vs_susce[, c(2, 3, 4, 5, 6, 7, 8, 9, 10, 11)]
+names(allres_vs_susce)
+
+allres_vs_susce_Info2R2 <- as.matrix(read.delim("allresvssus.txt", header = T, sep = '\t', row.names =1))
+names(allres_vs_susce_Info2R2)
+
+library(DESeq2)
+
+dds_all<- DESeqDataSetFromMatrix(allres_vs_susce, allres_vs_susce_Info2R2, ~condition)
+dds_all
+### if gene wide estimation dispersio are within 2 order
+## dds <- estimateDispersionsGeneEst(dds)
+# dispersions(dds) <- mcols(dds)$dispGeneEst
+#...then continue with testing using nbinomWaldTest or nbinomLRT
+
+keep_all <- rowSums(counts(dds_all)) >50
+dds_all <- dds_all[keep_all,]
+
+ddsDE_all <- DESeq(dds_all)
+results(ddsDE_all, alpha = 0.05)
+
+normCounts <- counts(ddsDE_all, normalized =T)
+write.csv(normCounts, "norma_all_RES_SUSC.csv")
+
+Res_all<- results(ddsDE_all, alpha = 0.05)
+summary(Res_all)
+resOrdered_all <- Res_all[order(Res_all$padj),]
+write.csv(resOrdered_all, "deseq.all_res_susce.csv")
+resultsNames(ddsDE_all)
+plotMA(ddsDE_all, ylim=c(-3,3))
+
+
+deseqRes_all <- read.csv("deseq.all_res_susce.csv", row.names = 1)
+deseqRes_all <- na.omit(deseqRes_all)
+deseqRes_all$sig <- ifelse(deseqRes_all$padj <=0.05, "yes", "no")
+library(ggplot2)
+ggplot(deseqRes_all, aes(x=baseMean, y=log2FoldChange, col =sig)) +
+  geom_point()
+
+ggplot(deseqRes_all, aes(x=log2FoldChange, y=-log10(padj), col =sig)) +
+  geom_point()
+
+
+ggplot(deseqRes_all, aes(x=log2FoldChange, y=-log10(padj), col =sig)) +
+  geom_point(stroke =2 , shape = 16, size=1)+
+  theme(panel.background = element_rect(fill = "white", color = "grey50"))
+
+
+
+ggplot(deseqRes_all, aes(x=log2FoldChange, y=-log10(padj), col =sig)) +
+  geom_point(stroke =2 , shape = 16, size=1)+
+  theme(panel.background = element_rect(fill = "white", color = "grey50")) +
+  #scale_y_continuous(limits = c(0, 120))+
+  geom_vline(xintercept=c(-1, 1), col="black", lty=3) + geom_hline(yintercept = -log10(0.01), lty=3, color="black")+
+  theme(legend.title=element_blank())+
+  #scale_y_continuous(limits = c(0, 90))+
+  ggtitle("I-MAL vs Rock")+
+  labs(x = expression ("log"[2](FC)), y=expression("-log"[10](FDR)))
