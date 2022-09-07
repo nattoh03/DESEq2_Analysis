@@ -24,46 +24,53 @@ Three questions to answer
     and sample description file (.txt)
     
     
-####To install this DESeq2 package, start R (version "4.2") and enter:
-
-R
-if (!require("BiocManager", quietly = TRUE))
+#### To install this DESeq2 package, start R (version "4.2") and enter:
+    R
+    if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 
-BiocManager::install("DESeq2")
-####(source: https://bioconductor.org/packages/release/bioc/html/DESeq2.html)
+    BiocManager::install("DESeq2")
+#### (source: https://bioconductor.org/packages/release/bioc/html/DESeq2.html)
 
 
 
 
-#Load packages----
-library(limma)
-library(edgeR)
-library(ggplot2)
-library(tidyverse)
-library(ggpubr)
-#set the working directory. Go to compartment C on your computer and create a folder named Diana. And transfer the excel file into this folder, name the excel file as featurecount, And make sure this excel file is saved as comma delimited. 
-getwd()
-setwd("D:/new isaiah")
-alldata <- read.csv("table_gene_counts.csv", header = T, row.names =1)
-names(alldata)
-
-allres_vs_susce <- alldata[, c(1, 3, 4, 5, 12, 13, 6, 7, 9, 11, 14)]
-kombewa <- alldata[, c(1, 7, 6, 5, 4, 3, 2, 10)]
-names(kombewa)
-
-siaya <- alldata[, c(1, 9, 8, 10, 8, 2, 9)]
-names(siaya)
+#### Load packages----
+#### 
+    library(edgeR)
+    library(ggplot2)
+    library(tidyverse)
+    library(ggpubr)
+    library(limma)
+    
+    
 
 
-port_vict <- alldata[, c(1, 11, 12, 2, 12, 10, 11)]
-names(port_vict)
+#### set the working directory. Go to compartment D on your computer and create a folder named isaiah. And transfer the csv file into this folder, name the excel file as table_gene_counts.csv, And make sure this excel file is saved as comma delimited. 
+    getwd()
+    library(edgeR)
+    library(ggplot2)
+    setwd("D:/isaiah")
+    alldata <- read.csv("table_gene_counts.csv", header = T, row.names =1)
+    names(alldata)
+    
+    allres_vs_susce <- alldata[, c(1, 3, 4, 5, 12, 13, 6, 7, 9, 11, 14)]
+    kombewa <- alldata[, c(1, 7, 6, 5, 4, 3, 2, 10)]
+    names(kombewa)
+    
+    
+    
+    siaya <- alldata[, c(1, 9, 8, 10, 8, 2, 9)]
+    names(siaya)
+    
+    port_vict <- alldata[, c(1, 11, 12, 2, 12, 10, 11)]
+    names(port_vict)
 
 
-teso <- alldata[, c(1, 14, 13, 2, 13, 10, 14)]
-names(teso)
+    teso <- alldata[, c(1, 14, 13, 2, 13, 10, 14)]
+    names(teso)
 
-metaTeso <- data.frame(samples =c(Teso_resistant),
+    metaTeso <- data.frame(samples =c(Teso_resistant),
 
 
 
