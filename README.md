@@ -20,8 +20,8 @@ Three questions to answer
 #### Do different samples express genes differentially?
     now this part is done in R
     using library(DESeq2)
-    the .txt file from htseq-count
-    and sample description file (.txt)
+    the .txt or .csv file from htseq-count
+    and sample description file (.txt or .csv)
     
     
 #### To install this DESeq2 package, start R (version "4.2") and enter:
@@ -37,7 +37,6 @@ Three questions to answer
 
 #### Load packages----
 #### 
-    library(edgeR)
     library(ggplot2)
     library(tidyverse)
     library(ggpubr)
@@ -49,11 +48,17 @@ Three questions to answer
 #### set the working directory. Go to compartment D on your computer and create a folder named isaiah. And transfer the csv file into this folder, name the excel file as table_gene_counts.csv, And make sure this excel file is saved as comma delimited. 
     # check your present working directory
     getwd()
+    
+    
     set a new folder as your working directory 
     setwd("D:/isaiah")
-    # load your data, and give it a new name e.g alldata
+    
+    
+    #### load your data, and give it a new name e.g alldata
     alldata <- read.csv("table_gene_counts.csv", header = T, row.names =1)
-    check the names of the columns in your data to guide you if you want to extract a part of it
+    
+    
+    #### check the names of the columns in your data to guide you if you want to extract a part of it
     names(alldata)
     
     # extract sample from one site e.g kombewa area
