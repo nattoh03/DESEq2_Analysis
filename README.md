@@ -85,8 +85,9 @@ Three questions to answer
     port_vict <- alldata[, c(1, 11, 12, 2, 12, 10, 11)]
     names(port_vict)
 
-   
-    extract samples from port teso area  (i.e. resistant vs susceptible)
+
+#### downstream analysis of Teso samples (resistant vs susceptible) # plotting of a volcano plot
+    extract samples from  teso area  (i.e. resistant vs susceptible)
     
     teso <- alldata[, c(1, 14, 13, 2, 13, 10, 14)]
     names(teso)
