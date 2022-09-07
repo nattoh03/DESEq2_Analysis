@@ -1,0 +1,5 @@
+	condition
+Siaya_resistant	resistant
+Siaya_susceptible	susceptible
+komb_02_resistant	resistant
+komb_06_susceptible	susceptible

@@ -1,0 +1,6 @@
+	condition
+komb_02_resistant	resistant
+kombe_01_resistant	resistant
+komb_04_susceptible	susceptible
+komb_06_susceptible	susceptible
+kombewa_05_susceptible	susceptible

@@ -1,0 +1,5 @@
+	condition
+PortVict_resistant	resistant
+PortVict_susceptible	susceptible
+Siaya_susceptible	susceptible
+Siaya_resistant	resistant

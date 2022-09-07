@@ -1,0 +1,5 @@
+	condition
+Teso_resistant	resistant
+Teso_resistant.1	resistant
+teso1_susceptible	susceptible
+siaya_unexposed	susceptible

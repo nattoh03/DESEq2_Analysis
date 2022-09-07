@@ -1,0 +1,11 @@
+	condition
+kombewa_05_susceptible	susceptible
+komb_06_susceptible	susceptible
+komb_04_susceptible	susceptible
+PortVict_susceptible	susceptible
+teso_susceptible	susceptible
+kombe_01_resistant	resistant
+komb_02_resistant	resistant
+Siaya_resistant	resistant
+PortVict_resistant	resistant
+Teso_resistant	resistant
