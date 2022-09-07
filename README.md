@@ -41,53 +41,129 @@ Three questions to answer
     library(tidyverse)
     library(ggpubr)
     library(limma)
-    
-    
+    library(DESeq2)
 
-
+      
 #### set the working directory. Go to compartment D on your computer and create a folder named isaiah. And transfer the csv file into this folder, name the excel file as table_gene_counts.csv, And make sure this excel file is saved as comma delimited. 
     # check your present working directory
     getwd()
     
     
     set a new folder as your working directory 
+    
     setwd("D:/isaiah")
     
     
-    #### load your data, and give it a new name e.g alldata
+    
+    load your data, and give it a new name e.g alldata
+    
     alldata <- read.csv("table_gene_counts.csv", header = T, row.names =1)
     
     
-    #### check the names of the columns in your data to guide you if you want to extract a part of it
+    
+    check the names of the columns in your data to guide you if you want to extract a part of it
+    
     names(alldata)
     
-    # extract sample from one site e.g kombewa area
+    
+    extract sample from one site e.g kombewa area (i.e. resistant vs susceptible)
+   
     kombewa <- alldata[, c(1, 7, 6, 5, 4, 3, 2, 10)]
     names(kombewa)
     
     
     
-    # extract samples from siaya area
+    
+    extract samples from siaya area  (i.e. resistant vs susceptible)
+    
     siaya <- alldata[, c(1, 9, 8, 10, 8, 2, 9)]
     names(siaya)
     
-    # extract samples from port victoria area
+    
+    extract samples from port victoria area  (i.e. resistant vs susceptible)
+    
     port_vict <- alldata[, c(1, 11, 12, 2, 12, 10, 11)]
     names(port_vict)
 
-    # extract samples from port teso area
+   
+    extract samples from port teso area  (i.e. resistant vs susceptible)
+    
     teso <- alldata[, c(1, 14, 13, 2, 13, 10, 14)]
     names(teso)
-
-    metaTeso <- data.frame(samples =c(Teso_resistant),
-
-
-
-
-library(DESeq2 )
-library(ggplot2)
-
     
+    write.csv(teso, "teso_res_vs_susce.csv")
+    
+    teso_res_vs_susce <- as.matrix(read.csv("teso_res_vs_susce.csv", header = T, row.names = "gene_id"))
+    
+    teso_res_vs_susce <- teso_res_vs_susce[, c(2, 3, 4, 5, 6, 7)]
+    
+    sample info
+    teso_res_vs_susce_Info2R2 <- as.matrix(read.delim("teso_res_vs_susceINFO.txt", header = T, sep = '\t', row.names =1))
+   
+    ensure the library is loaded
+    library(DESeq2)
+
+    dds_teso<- DESeqDataSetFromMatrix(teso_res_vs_susce, teso_res_vs_susce_Info2R2, ~condition)
+    dds_teso
+    
+    keep_teso <- rowSums(counts(dds_teso)) >20
+    
+    
+    dds_teso <- dds_teso[keep_teso,]
+    
+    ddsDE_teso <- DESeq(dds_teso)
+    
+    
+    results(ddsDE_teso, alpha = 0.05)
+    
+    normCounts <- counts(ddsDE_teso, normalized =T)
+    
+    write.csv(normCounts, "norma_teso_res_vs_sus.csv")
+
+Res_all<- results(ddsDE_all, alpha = 0.05)
+summary(Res_all)
+resOrdered_all <- Res_all[order(Res_all$padj),]
+write.csv(resOrdered_all, "deseq.all_res_susce.csv")
+resultsNames(ddsDE_all)
+plotMA(ddsDE_all, ylim=c(-3,3))
+
+
+deseqRes_all <- read.csv("deseq.all_res_susce.csv", row.names = 1)
+deseqRes_all <- na.omit(deseqRes_all)
+deseqRes_all$sig <- ifelse(deseqRes_all$padj <=0.05, "yes", "no")
+library(ggplot2)
+ggplot(deseqRes_all, aes(x=baseMean, y=log2FoldChange, col =sig)) +
+  geom_point()
+
+ggplot(deseqRes_all, aes(x=log2FoldChange, y=-log10(padj), col =sig)) +
+  geom_point()
+
+
+ggplot(deseqRes_all, aes(x=log2FoldChange, y=-log10(padj), col =sig)) +
+  geom_point(stroke =2 , shape = 16, size=1)+
+  theme(panel.background = element_rect(fill = "white", color = "grey50"))
+
+
+
+ggplot(deseqRes_all, aes(x=log2FoldChange, y=-log10(padj), col =sig)) +
+  geom_point(stroke =2 , shape = 16, size=1)+
+  theme(panel.background = element_rect(fill = "white", color = "grey50")) +
+  #scale_y_continuous(limits = c(0, 120))+
+  geom_vline(xintercept=c(-1, 1), col="black", lty=3) + geom_hline(yintercept = -log10(0.01), lty=3, color="black")+
+  theme(legend.title=element_blank())+
+  #scale_y_continuous(limits = c(0, 90))+
+  ggtitle("I-MAL vs Rock")+
+  labs(x = expression ("log"[2](FC)), y=expression("-log"[10](FDR)))
+   
+   
+   
+   
+
+
+
+
+
+   
 ############## ALL RES   VS   ALL SUSCE 
 allres_vs_susce1 <- alldata[, c(1, 3, 4, 5, 12, 13, 6, 7, 9, 11, 14)]
 
