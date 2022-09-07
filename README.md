@@ -47,26 +47,30 @@ Three questions to answer
 
 
 #### set the working directory. Go to compartment D on your computer and create a folder named isaiah. And transfer the csv file into this folder, name the excel file as table_gene_counts.csv, And make sure this excel file is saved as comma delimited. 
+    # check your present working directory
     getwd()
-    library(edgeR)
-    library(ggplot2)
+    set a new folder as your working directory 
     setwd("D:/isaiah")
+    # load your data, and give it a new name e.g alldata
     alldata <- read.csv("table_gene_counts.csv", header = T, row.names =1)
+    check the names of the columns in your data to guide you if you want to extract a part of it
     names(alldata)
     
-    allres_vs_susce <- alldata[, c(1, 3, 4, 5, 12, 13, 6, 7, 9, 11, 14)]
+    # extract sample from one site e.g kombewa area
     kombewa <- alldata[, c(1, 7, 6, 5, 4, 3, 2, 10)]
     names(kombewa)
     
     
     
+    # extract samples from siaya area
     siaya <- alldata[, c(1, 9, 8, 10, 8, 2, 9)]
     names(siaya)
     
+    # extract samples from port victoria area
     port_vict <- alldata[, c(1, 11, 12, 2, 12, 10, 11)]
     names(port_vict)
 
-
+    # extract samples from port teso area
     teso <- alldata[, c(1, 14, 13, 2, 13, 10, 14)]
     names(teso)
 
