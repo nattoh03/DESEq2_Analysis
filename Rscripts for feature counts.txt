@@ -81,7 +81,6 @@ view(normCounts)
 write.csv(normCounts, "normal.resistantassay.csv")
 #
 #
-#
 #####Deseq results and summary ###
 results(ddsDE, alpha = 0.05)
 res<- results(ddsDE, alpha = 0.05)
