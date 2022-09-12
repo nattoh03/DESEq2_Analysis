@@ -61,7 +61,6 @@ view(combined_dd)
 #
 #
 #
-#
 ##### do some filtering by getting rid of lowly expressed genes ######
 keep <- rowSums(counts(combined_dd)) >=10
 dds <- dds[keep,]
