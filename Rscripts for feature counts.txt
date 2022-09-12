@@ -37,7 +37,6 @@ library(edgeR) # differential gene expression analysis
 library(ggplot2) # for regular plotting
 library(ggpubr) #  to plot figures in one window
 library(data.table)
-
 #
 ###set the working directory ###########
 setwd("\user\nattohz\Fun_RNASeq\DESEq2_Analysis")
@@ -50,8 +49,6 @@ Sample_info
 ##  siaya_susceptible      0.05%_Deltamethrin_exposed
 ##  siaya_unexposed        Acetone_control
 ##
-#
-#
 ###Load count matrix ##########
 Count_data <- read.csv("All_Hisat_output_file.csv", header = T, row.names = 1)
 Count_data 
