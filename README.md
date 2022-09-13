@@ -41,7 +41,6 @@ DOWNSTREAM ANALYSIS IN R
 
 
 #### Load packages ----
-#### 
     library(ggplot2)
     library(tidyverse)
     library(ggpubr)
@@ -56,19 +55,19 @@ DOWNSTREAM ANALYSIS IN R
     
     set a new folder as your working directory 
     
-    setwd("D:/isaiah")
+           setwd("D:/isaiah")
     
     
     
     load your data, and give it a new name e.g alldata
     
-    alldata <- read.csv("table_gene_counts.csv", header = T, row.names =1)
+         alldata <- read.csv("table_gene_counts.csv", header = T, row.names =1)
     
     
     
     check the names of the columns in your data to guide you if you want to extract a part of it
     
-    names(alldata)
+         names(alldata)
     
     
     extract sample from one site e.g kombewa area (i.e. resistant vs susceptible)
