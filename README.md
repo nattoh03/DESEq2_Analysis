@@ -23,7 +23,12 @@ Three questions to answer
     the .txt or .csv file from htseq-count
     and sample description file (.txt or .csv)
     
-    
+ 
+ 
+ 
+ 
+DOWNSTREAM ANALYSIS IN R 
+ 
 #### To install this DESeq2 package, start R (version "4.2") and enter:
     R
     if (!require("BiocManager", quietly = TRUE))
@@ -35,7 +40,7 @@ Three questions to answer
 
 
 
-#### Load packages----
+#### Load packages ----
 #### 
     library(ggplot2)
     library(tidyverse)
