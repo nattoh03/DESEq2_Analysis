@@ -3,7 +3,7 @@
 #### reference 1:
 #### https://github.com/nattoh03/RNASeq-Analysis-with-Hisat2/blob/main/pipeline_fastqc_alignHISAT2_bamsorted_output.txt
 
-Three questions to answer
+The Three questions to answer
 
 #### which genes do the reads (samples) belong to ?
     done in supercomputer, alignment of ref genome with Hisat2
