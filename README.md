@@ -105,7 +105,7 @@ DOWNSTREAM ANALYSIS IN R
     sample info
     teso_res_vs_susce_Info2R2 <- as.matrix(read.delim("teso_res_vs_susceINFO.txt", header = T, sep = '\t', row.names =1))
    
-    ensure the library is loaded
+   #### undertake differential analysis, but first ensure the library is loaded
     library(DESeq2)
 
     dds_teso<- DESeqDataSetFromMatrix(teso_res_vs_susce, teso_res_vs_susce_Info2R2, ~condition)
