@@ -77,7 +77,7 @@ DOWNSTREAM ANALYSIS IN R
     names(siaya)
     
     
-    extract samples from port victoria area  (i.e. resistant vs susceptible)
+#### To extract samples from port victoria area  (i.e. resistant vs susceptible)
     
     port_vict <- alldata[, c(1, 11, 12, 2, 12, 10, 11)]
     names(port_vict)
