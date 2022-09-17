@@ -65,7 +65,7 @@ DOWNSTREAM ANALYSIS IN R
          names(alldata)
     
     
-    extract sample from one site e.g kombewa area (i.e. resistant vs susceptible)
+#### To extract sample from one site e.g kombewa area (i.e. resistant vs susceptible)
    
     kombewa <- alldata[, c(1, 7, 6, 5, 4, 3, 2, 10)]
     names(kombewa)
