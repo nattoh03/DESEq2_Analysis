@@ -59,13 +59,8 @@ DOWNSTREAM ANALYSIS IN R
 #### To load your data, and give it a new name e.g alldata
     
          alldata <- read.csv("table_gene_counts.csv", header = T, row.names =1)
-         view column names
-         names(alldata)
-         
-    
-    
-    
-    check the names of the columns in your data to guide you if you want to extract a part of it
+           
+#### To check the names of the columns in your data to guide you if you want to extract a part of it
     
          names(alldata)
     
