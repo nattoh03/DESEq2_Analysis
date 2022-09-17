@@ -38,8 +38,6 @@ DOWNSTREAM ANALYSIS IN R
 #### (source: https://bioconductor.org/packages/release/bioc/html/DESeq2.html)
 
 
-
-
 #### Load packages ----
     library(ggplot2)
     library(tidyverse)
@@ -76,9 +74,7 @@ DOWNSTREAM ANALYSIS IN R
     names(kombewa)
     
     
-    
-    
-    extract samples from siaya area  (i.e. resistant vs susceptible)
+#### To extract samples from siaya area  (i.e. resistant vs susceptible)
     
     siaya <- alldata[, c(1, 9, 8, 10, 8, 2, 9)]
     names(siaya)
