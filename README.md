@@ -56,10 +56,12 @@ DOWNSTREAM ANALYSIS IN R
            setwd("D:/isaiah")
     
     
-    
-    load your data, and give it a new name e.g alldata
+#### To load your data, and give it a new name e.g alldata
     
          alldata <- read.csv("table_gene_counts.csv", header = T, row.names =1)
+         view column names
+         names(alldata)
+         
     
     
     
