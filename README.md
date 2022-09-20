@@ -88,6 +88,8 @@ The Three questions to answer
     names(teso)
     
     write.csv(teso, "teso_res_vs_susce.csv")
+#### ensure your data and sample informating are in matrix format
+
     
     teso_res_vs_susce <- as.matrix(read.csv("teso_res_vs_susce.csv", header = T, row.names = "gene_id"))
     
@@ -96,7 +98,7 @@ The Three questions to answer
     sample info
     teso_res_vs_susce_Info2R2 <- as.matrix(read.delim("teso_res_vs_susceINFO.txt", header = T, sep = '\t', row.names =1))
    
-   #### undertake differential analysis, but first ensure the library is loaded
+#### undertake differential analysis, but first ensure the library is loaded
     library(DESeq2)
 
     dds_teso<- DESeqDataSetFromMatrix(teso_res_vs_susce, teso_res_vs_susce_Info2R2, ~condition)
