@@ -25,9 +25,7 @@ The Three questions to answer
     
  
  
- 
- 
-DOWNSTREAM ANALYSIS IN R 
+ DOWNSTREAM ANALYSIS IN R 
  
 #### To install this DESeq2 package, start R (version "4.2") and enter:
     R
