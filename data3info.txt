@@ -1,0 +1,13 @@
+	condition
+24025XR-01-01	susceptible
+24025XR-01-02	susceptible
+24025XR-01-03	susceptible
+24025XR-01-04	susceptible
+24025XR-01-05	susceptible
+24025XR-01-06	susceptible
+24025XR-01-07	susceptible
+24025XR-01-08	susceptible
+24025XR-01-09	susceptible
+24025XR-01-100	resistant
+24025XR-01-101	resistant
+24025XR-01-102	resistant
